@@ -1,7 +1,7 @@
 from typing import Optional
-class Computer:
 
-    # What attributes will it need?
+# define all attributes of the Computer class
+class Computer:
     description: str
     processor_type: str
     hard_drive_capacity: int
@@ -12,8 +12,7 @@ class Computer:
 
 
 
-    # How will you set up your constructor?
-    # Remember: in python, all constructors have the same name (__init__)
+    # constructor
     def __init__(self, description, processor_type,hard_drive_capacity,memory,operating_system,year_made,price):
         self.description = description
         self.processor_type = processor_type
@@ -23,10 +22,11 @@ class Computer:
         self.year_made = year_made
         self.price = price
 
-    # What methods will you need?
+    # sets price to user's input
     def update_price(self,new_price: int):
         self.price = new_price
     
+    # checks the year made, sets new price, also updates operating system
     def refurbish(self, new_os: Optional[str]=None):
         if self.year_made < 2000:
             self.price = 0
@@ -38,3 +38,13 @@ class Computer:
             self.price = 1000
         if new_os is not None:
             self.operating_system = new_os
+
+    # prints all details about the computer
+    def printDetails(self):
+        print("Description: " + self.description)
+        print("Processor type: " + self.processor_type)
+        print("Hard drive capacity: " + self.hard_drive_capacity)
+        print("Memory: "+self.memory)
+        print("Operating system: "+self.operating_system)
+        print("Year made: "+self.year_made)
+        print("Price: "+self.price)

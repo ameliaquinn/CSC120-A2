@@ -1,26 +1,26 @@
-class ResaleShop:
+import computer
 
-    # What attributes will it need?
+# defines all attributes of the resale shop class 
+class ResaleShop:
     inventory: list 
 
-    # How will you set up your constructor?
-    # Remember: in python, all constructors have the same name (__init__)
+    # constructor 
     def __init__(self):
         self.inventory = []
 
-        pass # You'll remove this when you fill out your constructor
-
-    # What methods will you need?
-    # GOAL: add c to self.inventory
-    def buy(self, c: str):
-            self.inventory.append(c)
+     # adds a computer to the inventory list 
+    def buy(self, c: computer):
+        self.inventory.append(c)
     
-    def sell(self, itemID: int):
-         if itemID < len(self.inventory):
-              del self.inventory[itemID]
-              print("Item", itemID, "successfully sold!")
+    # checks to see if a computer is in the inventory, otherwise tells the user the item is not found
+    def sell(self, c: computer):
+         if c in self.inventory:
+              self.inventory.remove(c)
+              print("Item " + c + " successfully sold!")
          else: 
-              print("Item", itemID, "not found. Please try again!")
+              print("Item " +c+ " not found. Please try again!")
+    
+    # Checks to see that the inventory is non-empty, then prints all items in the inventory
     def print_inventory(self):
          if self.inventory:
               for i in self.inventory:
@@ -40,7 +40,7 @@ def main():
      c = "My Awesome Computer"
      myShop.buy(c)
      print("There are now", len(myShop.inventory), "items in stock.")
-     myShop.sell(1)
+     myShop.sell(c)
 
 
      
